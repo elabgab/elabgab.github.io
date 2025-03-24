@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 4 with You Boo &#9829;</title>
+    <style>
+          /* Body layout and center everything */
+          *{
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+        .line-1{
+            position: absolute;
+            top: 80px;  
+            left: 20px;
+            width: 24em;
+            margin: 0;
+            border-right: 2px solid rgba(255,255,255,.75);
+            font-size: 3em;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);
+                
+        }
+       
+            /* Animation */
+       
+        /* Box container for media */
+        .media-box {
+            background-color: #000000;
+            border: 10px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden; /* Hide overflow if the media is larger than the box */
+            width: auto;
+            height: 88vh;
+        }
+
+        /* Navigation arrows */
+        .arrow-left, .arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        /* Media (Image/Video) Styling */
+        .media-container {
+            display: none;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Make the first image/video visible by default */
+        .media-container.active {
+            display: block;
+        }
+        .heading-link{
+            text-decoration: none;
+            color: #000000;
+            text-align: left;   
+            margin-top: -92vh;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="heading-link">
+    <h1 class="heading">Go back to Memories</h1>
+</a>
+
+<!-- Media Box -->
+<div class="media-box">
+    <!-- Left Arrow -->
+    <button class="arrow-left" onclick="changeMedia(-1)">&#8592;</button>
+
+    <!-- Media Items -->
+    <div class="media-container active">
+        <img src="EP 4/eps4.png" alt="Image 1">
+    </div>
+    <div class="media-container">
+        <img src="EP 4/IMG_20241225_103546_285.jpg" alt="Image 2">
+    </div>
+    <div class="media-container">
+        <img src="EP 4/IMG_20241231_194013_872.jpg" alt="Image 3">
+    </div>
+    
+    <div class="media-container">
+        <video controls>
+            <source src="../booo/EP 4/VID_20241223_124415.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Right Arrow -->
+    <button class="arrow-right" onclick="changeMedia(1)">&#8594;</button>
+</div>
+
+<script>
+    let currentMediaIndex = 0;
+const mediaItems = document.querySelectorAll('.media-container');
+let videoTimestamps = {}; // Object to store timestamps
+
+function changeMedia(direction) {
+    // Get the current media item
+    let currentMedia = mediaItems[currentMediaIndex].querySelector('video');
+
+    // If it's a video, store the current timestamp before hiding
+    if (currentMedia) {
+        videoTimestamps[currentMediaIndex] = currentMedia.currentTime; // Save current time
+        currentMedia.pause();
+    }
+
+    // Hide current media
+    mediaItems[currentMediaIndex].classList.remove('active');
+
+    // Update index
+    currentMediaIndex += direction;
+
+    // Loop around if necessary
+    if (currentMediaIndex < 0) {
+        currentMediaIndex = mediaItems.length - 1;
+    } else if (currentMediaIndex >= mediaItems.length) {
+        currentMediaIndex = 0;
+    }
+
+    // Show new media
+    mediaItems[currentMediaIndex].classList.add('active');
+
+    // If the new media is a video, resume from saved timestamp
+    let newMedia = mediaItems[currentMediaIndex].querySelector('video');
+    if (newMedia) {
+        if (videoTimestamps[currentMediaIndex] !== undefined) {
+            newMedia.currentTime = videoTimestamps[currentMediaIndex]; // Restore timestamp
+        }
+        newMedia.play();
+    }
+}
+
+</script>
+
+</body>
+</html>
