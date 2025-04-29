@@ -1,271 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dear Rei</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Quicksand', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+        }
 
-    body {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      background-color: #fff;
-    }
+        .heading {
+            font-size: 3rem;
+            color: palevioletred;
+            margin-bottom: 20px;
+        }
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
+        /* Episode Container */
+        .episodes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 139px;
+            margin-top: 20px;
+        }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .episode {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 700px; /* Adjust width as needed */
+        }
 
-    .hearts {
-      background: url('images/heart.png') no-repeat center top;
-      background-size: cover;
-      padding-top: 150px;
-      position: relative;
-      overflow: hidden;
-    }
+        .episode h3 {
+            font-size: 2rem;
+            color: palevioletred;
+            margin-bottom: 10px;
+        }
 
-    .message h1 {
-      font-size: 2rem;
-      color: #333;
-      margin-bottom: 1rem;
-    }
+        .episode img {
+            width: 100%;
+            height: auto;
+            border: 3px solid black; /* Optional border for styling */
+        }
 
-    .message p {
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 600px;
-    }
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .episodes-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .episode h3 {
+                font-size: 1.8rem;
+            }
+        }
+          .episode a img {
+            width: 100%; /* Ensures the image fits */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            border-radius: 10px; /* Optional rounded corners */
+}
 
-    .scroll-indicator {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #888;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
-    }
-
-    .photo-section img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      margin-top: 2rem;
-    }
-
-    .caption {
-      font-size: 1.1rem;
-      color: #666;
-      margin-top: 1rem;
-      max-width: 600px;
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      transform: rotate(45deg);
-      animation: float 6s infinite ease-in;
-      opacity: 0.8;
-    }
-
-    .heart::before, .heart::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1) rotate(45deg); opacity: 1; }
-      100% { transform: translateY(-800px) scale(1.5) rotate(45deg); opacity: 0; }
-    }
-  </style>
+        .episode a:hover img {
+            transform: scale(1.1); /* Slight zoom effect */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Add shadow */
+            opacity: 0.9; /* Slight fade effect */
+}
+    </style>
 </head>
 <body>
 
-  <section class="hearts">
-    <div class="message">
-      <h1>Dear Daniela,</h1>
-      <p>Happy Birthday boo,<br>On this special day, I want you to know <br>how beautiful you are. 💗<br> by showing every picture when i think you are the best</p>
-      <div class="scroll-indicator">▼ SCROLL ▼</div>
-    </div>
-    <script>
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = `${Math.random() * 100}%`;
-        heart.style.animationDuration = `${4 + Math.random() * 3}s`;
-        document.querySelector('.hearts').appendChild(heart);
-        setTimeout(() => heart.remove(), 7000);
-      }, 300);
-    </script>
-  </section>
+    <section class="memories" id="memories-section">
+        <h1 class="heading">Memories</h1>
+        
+        <!-- Episodes 1 & 2 -->
+        <div class="episodes-container">
+            <div class="episode">
+                <h3>Episode 1</h3>
+                <a href="eps1.html">
+                    <img src="eps_1_template.png" alt="Episode 1">
+                </a>
+            </div>
+            <div class="episode">
+                <h3>Episode 2</h3>
+                <a href="eps2.html">
+                    <img src="eps_2_template.png" alt="Episode 2">
+                </a>
+            </div>
+        </div>
 
-  <section class="photo-section">
-    <img src="1.jpg" alt="boowithoperate">
-    <div class="caption">I remember this day that you share a video like operating na amaze lang ako nun kase para kapo talagang nag o operate. 💖</div>
-  </section>
+        <!-- Episodes 3 & 4 -->
+        <div class="episodes-container">
+            <div class="episode">
+                <h3>Episode 3</h3>
+                <a href="eps3.html">
+                    <img src="eps_3_template.png" alt="Episode 3">
+                </a>
+            </div>
+            <div class="episode">
+                <h3>Episode 4</h3>
+                <a href="eps4.html">
+                    <img src="eps4.png" alt="Episode 4">
+                </a>
+            </div>
+        </div>
 
-    <section class="photo-section">
-        <img src="2.jpg" alt="boosecond image">
-        <div class="caption">Just like this moment, you bring a positive vibes to encourage more people to be with you. 💖</div>
-    </section>
- 
-  <section class="photo-section">
-    <img src="3.jpg" alt="third image">
-    <div class="caption">It really makes me happy when you said na you want to learn to code even na mabagal progress naten atleast we make it na. 💖</div>
-  </section>
+        <!-- Episodes 5, 6 & 7 -->
+        <div class="episodes-container">
+            <div class="episode">
+                <h3>Episode 5</h3>
+                <a href="eps5.html">
+                    <img src="eps5.png" alt="Episode 5">
+                </a>
+            </div>
+            <div class="episode">
+                <h3>Episode 6</h3>
+                <a href="eps6.html">
+                    <img src="eps6.png" alt="Episode 6">
+                </a>
+            </div>
+            <div class="episode">
+                <h3>Random Pictures</h3>
+                <a href="eps7.html">
+                    <img src="retrato-12-07.jpeg" alt="Episode 7">
+                </a>
+            </div>
+        </div>
 
-  <section class="photo-section">
-    <img src="4.jpg" alt="fourth image">
-    <div class="caption">Every moment with you is precious. 💖</div>
-  </section>
-  
-  <section class="photo-section">
-    <img src="5.jpg" alt="fifth image">
-    <div class="caption">Your smile lights up the room. 💖</div>
-  </section>
-
-  
-  <section class="photo-section">
-    <img src="6.jpg" alt="sixth image">
-    <div class="caption">You always look pretty even you have diff hairstyle. 💖</div>
-  </section>
-  
-  <section class="photo-section">
-    <img src="7.jpg" alt="seventh image">
-    <div class="caption">Ganda po ng ngiti mo dito boo. 💖</div>
-  </section>
-  
-  <section class="photo-section">
-    <img src="8.jpg" alt="eighth image">
-    <div class="caption">I hope you have a wonderful day in this picture. 💖</div>
-  </section>
-
-  <section class="photo-section">
-    <img src="9.jpg" alt="ninth image">
-    <div class="caption">eto ung araw na pinaka memorable saken sobrang saya ko ng araw nato. 💖</div>
-  </section>
-
-  <section class="photo-section">
-    <img src="10.jpg" alt="tenth image">
-    <div class="caption">First feast together nagustahan pa ni brother mike ung jacket hahaha naging favorite tuloy. 💖</div>
-  </section>\
-
-  <section class="photo-section">
-    <img src="11.jpg" alt="eleventh image">
-    <div class="caption">I love this picture so much sobrang ganda mooo. 💖</div>
     </section>
 
-    
-  <section class="photo-section">
-    <img src="12.jpg" alt="twelve image">
-    <div class="caption">First nuvali hahaha. 💖</div>
-    </section>
-
-    
-  <section class="photo-section">
-    <img src="13.jpg" alt="thire image">
-    <div class="caption">ahhhhhhhhhhhh vball eraa. 💖</div>
-    </section>
-  
-    
-  <section class="photo-section">
-    <img src="14.jpg" alt="poart image">
-    <div class="caption">cute nyo ni chloe dito boo fav ko talaga kayong dalawa. 💖</div>
-    </section>
-    
-  <section class="photo-section">
-    <img src="16.jpg" alt="sesten image">
-    <div class="caption">Soon LAb Coat na suot mo boo. 💖</div>
-  </section>
-
-
-  <section class="photo-section">
-    <img src="18.jpg" alt="eyt image">
-    <div class="caption">wow pinned na sya dito congrats boo. 💖</div>
-  </section>
-
-  <section class="photo-section">
-    <img src="19.jpg" alt="nineteenth image">
-    <div class="caption">Sana nagustahan mo ung flowers boo. 💖</div>
-  </section>
-
-  <section class="photo-section">
-    <img src="20.jpg" alt="twentieth image">
-    <div class="caption">Ahhhhhhhhhhhhhhh ganda mo dito kaso ayaw mo ipa story pero okay lang atleast meron ako nan hehhehhe. 💖</div>
-  </section>
-  <section class="photo-section">
-    <img src="21.jpg" alt="twenty-first image">
-    <div class="caption">congrats boo cap and pinned kana 💖</div>
-  </section>
-
-  
-
-  <section class="photo-section">
-    <img src="22.jpg" alt="twenty-second image">
-    <div class="caption">CONGRATS BOO 💖</div>
-  </section>
-
-  <section class="photo-section">
-    <img src="23.jpg" alt="twenty-third image">
-    <div class="caption">HAPPY BIRTHDAY BOO, Akala ko nung una hindi ako makakagawa ng website dahil sa work pero nakagawa paren ako para sayo. i hope matupad lahat ng wish mo, Hindi paren ako makapaniwala na magiging ganto tayong dalawa napakalaking changes ang nabigaay
-        mo saken, Thank you boo for being here with me kahit na maraming challenges nandito kalang para saken, sa letter nalang po ung iba, Happy Birtday Ulit boo, Iloveyouuu Always.
-        - Brent Gabriel Jamias 💖</div>
-  </section>
-  
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
 </body>
 </html>
