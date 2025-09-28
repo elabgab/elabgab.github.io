@@ -1,0 +1,54 @@
+*{
+  box-sizing:border-box;
+}
+body{
+  background-color: #DDE5FF;
+  font-family: "Montserrat",sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:10px;
+  margin:0;
+  
+}
+
+h1{
+  margin-top:60rem;
+  font-size:5rem;
+  text-align: center;
+  justify-content:center;
+  line-height:1.2;
+  font-weight:normal;
+}
+p{
+  max-width:800px;
+  font-family:"Lora",sans-serif;
+  font-size:1.1rem;
+  line-height:1.5;
+  margin-bottom:60px;
+  font-weight:normal;
+  text-align:center;
+}
+.signature{
+  font-style:italic;
+  text-align:center;
+  
+}
+.image-box-title{
+  margin-bottom:12rem;
+  font-family:"Italianno",cursive;
+  font-weight:normal;
+  font-size:6.1rem;
+  text-align:center;
+  padding-bottom:300px;
+}
+.image-box{
+  height:286px;
+  width:383px;
+  overflow:hidden;
+  border:2px solid #cccc;
+  border-radius:8px;
+  justify-content:center;
+  
+}
