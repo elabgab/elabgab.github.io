@@ -49,6 +49,6 @@ p{
   gap:40px;
 }
 .img-box img{
-  height:200px;
-  width:10px;
+  height:auto;
+  width:100%;
 }
