@@ -1,171 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Episode 2 with You Boo &#9829</title>
-    <style>
-        /* Body layout and center everything */
-        *{
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #ffffff;
-        }
-        .line-1{
-            position: absolute;
-            top: 70px;  
-            left: 20px;
-            width: 24em;
-            margin: 0;
-            border-right: 2px solid rgba(255,255,255,.75);
-            font-size: 3em;
-            text-align: left;
-            white-space: nowrap;
-            overflow: hidden;
-            transform: translateY(-50%);
-                
-        }
-       
-            /* Animation */
-        .anim-typewriter{
-            animation: typewriter 4s steps(7) 1s infinite normal both,
-            blinkTextCursor 500ms steps(7) infinite normal;
-         }
-        @keyframes typewriter{
-            10%{width: 0;}
-            50%{width: 10em;}
-            75%{width: 24em;}
-            100%{width: 0;}
-                }
-        @keyframes blinkTextCursor{
-            from{border-right-color: rgba(255,255,255,.75);}
-            to{border-right-color: transparent;}
-        }
-        /* Box container for media */
-        .media-box {
-            max-width: 200vh;
-            max-height: 88vh;
-            background-color: #000000;
-            border: 10px solid #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden; /* Hide overflow if the media is larger than the box */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Episode 2 with You Boo &#9829;</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        /* Navigation arrows */
-        .arrow-left, .arrow-right {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 70px;
-            color: #333;
-            background-color: rgba(255, 255, 255, 0.6);
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff;
+      font-family: sans-serif;
+    }
 
-        .arrow-left {
-            left: 10px;
-        }
+    /* Typewriter Heading */
+    .line-1 {
+      position: absolute;
+      top: 70px;
+      left: 20px;
+      width: 24em;
+      border-right: 2px solid rgba(0, 0, 0, 0.75);
+      font-size: 2em;
+      white-space: nowrap;
+      overflow: hidden;
+      transform: translateY(-50%);
+    }
 
-        .arrow-right {
-            right: 10px;
-        }
+    .anim-typewriter {
+      animation: typewriter 4s steps(40) 1s infinite normal both,
+                 blinkTextCursor 500ms steps(40) infinite normal;
+    }
 
-        /* Media (Image/Video) Styling */
-        .media-container {
-            display: none;
-            max-width: 100%;
-            max-height: 88vh;
-            object-fit: cover;
-        }
+    @keyframes typewriter {
+      0% { width: 0; }
+      30% { width: 10em; }
+      60% { width: 24em; }
+      100% { width: 0; }
+    }
 
-        /* Make the first image/video visible by default */
-        .media-container.active {
-            display: block;
-        }
-        
-    </style>
+    @keyframes blinkTextCursor {
+      from { border-right-color: rgba(0, 0, 0, 0.75); }
+      to { border-right-color: transparent; }
+    }
+
+    /* Media Box */
+    .media-box {
+      max-width: 90vw;
+      max-height: 80vh;
+      background-color: #000;
+      border: 10px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 120px; /* To give space for heading */
+    }
+
+    .media-container {
+      display: none;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .media-container.active {
+      display: block;
+    }
+
+    /* Arrows */
+    .arrow-left, .arrow-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: #333;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .arrow-left {
+      left: 10px;
+    }
+
+    .arrow-right {
+      right: 10px;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 600px) {
+      .line-1 {
+        font-size: 1.2em;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<a href="index.html">
-    <h1 class="heading"><p class="line-1 anim-typewriter">Go back to Memories</p></h1>
-</a>
-    <!-- Media Box (Container for Image/Video) -->
-    <div class="media-box">
-        <!-- Arrow for previous media -->
-        <button class="arrow-left" onclick="changeMedia(-1)">&#8592;</button>
+  <!-- Header with return link -->
+  <a href="index.html" style="text-decoration: none; color: inherit;">
+    <div class="line-1 anim-typewriter">Go back to Memories</div>
+  </a>
 
-        <!-- Media items (Images/Videos) -->
-        <div class="media-container active">
-            <img src="eps221.jpeg" alt="Image 1">
-        </div>
-        <div class="media-container">
-            <img src="eps222.JPG" alt="Image 2">
-        </div>
-        
-        <div class="media-container">
-            <img src="eps223.jpg" alt="Image 2">
-        </div>
-        <div class="media-container">
-            <img src="eps23.JPG" alt="Image 2">
-        </div>
+  <!-- Media Viewer -->
+  <div class="media-box">
+    <button class="arrow-left" onclick="changeMedia(-1)">&#8592;</button>
 
-        <div class="media-container">
-            <img src="eps25.jpg" alt="Image 2">
-        </div>
-        <div class="media-container">
-            <img src="eps26.jpg" alt="Image 2">
-        </div>
-        <div class="media-container">
-            <img src="eps27.jpg" alt="Image 2">
-        </div>
-        <div class="media-container">
-            <img src="eps28.jpg" alt="Image 2">
-        </div>
-        <div class="media-container">
-            <img src="eps29.jpg" alt="Image 2">
-        </div>
-        <!-- Arrow for next media -->
-        <button class="arrow-right" onclick="changeMedia(1)">&#8594;</button>
+    <!-- Media Items -->
+    <div class="media-container active">
+      <img src="eps221.jpeg" alt="Episode Image 1">
+    </div>
+    <div class="media-container">
+      <img src="eps222.JPG" alt="Episode Image 2">
+    </div>
+    <div class="media-container">
+      <img src="eps223.jpg" alt="Episode Image 3">
+    </div>
+    <div class="media-container">
+      <img src="eps23.JPG" alt="Episode Image 4">
+    </div>
+    <div class="media-container">
+      <img src="eps25.jpg" alt="Episode Image 5">
+    </div>
+    <div class="media-container">
+      <img src="eps26.jpg" alt="Episode Image 6">
+    </div>
+    <div class="media-container">
+      <img src="eps27.jpg" alt="Episode Image 7">
+    </div>
+    <div class="media-container">
+      <img src="eps28.jpg" alt="Episode Image 8">
+    </div>
+    <div class="media-container">
+      <img src="eps29.jpg" alt="Episode Image 9">
     </div>
 
-    <script>
-        let currentMediaIndex = 0;
-        const mediaItems = document.querySelectorAll('.media-container');
+    <button class="arrow-right" onclick="changeMedia(1)">&#8594;</button>
+  </div>
 
-        // Function to change the media (image/video)
-        function changeMedia(direction) {
-            // Hide current media
-            mediaItems[currentMediaIndex].classList.remove('active');
+  <script>
+    const mediaItems = document.querySelectorAll('.media-container');
+    let currentMediaIndex = 0;
 
-            // Update current media index
-            currentMediaIndex += direction;
+    function changeMedia(direction) {
+      // Hide current media
+      mediaItems[currentMediaIndex].classList.remove('active');
 
-            // If we're at the beginning or end, loop around
-            if (currentMediaIndex < 0) {
-                currentMediaIndex = mediaItems.length - 1; // Go to last item
-            } else if (currentMediaIndex >= mediaItems.length) {
-                currentMediaIndex = 0; // Go to first item
-            }
+      // Update index
+      currentMediaIndex = (currentMediaIndex + direction + mediaItems.length) % mediaItems.length;
 
-            // Show new media
-            mediaItems[currentMediaIndex].classList.add('active');
-        }
-    </script>
+      // Show new media
+      mediaItems[currentMediaIndex].classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
